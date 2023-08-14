@@ -65,6 +65,22 @@ public class MappyMcMapFace<T,U,V> extends AbstractMap<T, Map<U, V>> {
     }
 
     /**
+     * Flattens the nested structure of the map using the provided combiner.
+     *
+     * @param combiner function to combine the two keys
+     * @return a flattened map with combined keys and values
+     */
+    public <R> Map<R, V> flatten(BiFunction<T, U, R> combiner) {
+        Map<R, V> resultMap = new HashMap<>();
+        internalMap.forEach((key1, nestedMap) ->
+                nestedMap.forEach((key2, value) ->
+                        resultMap.put(combiner.apply(key1, key2), value)
+                )
+        );
+        return resultMap;
+    }
+
+    /**
      * Retrieves the size of the nested map associated with the given key.
      *
      * @param key1 the first key
