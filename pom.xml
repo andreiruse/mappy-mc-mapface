@@ -13,7 +13,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version> <!-- You can adjust this if a newer version is available -->
+                <version>3.13.0</version> <!-- You can adjust this if a newer version is available -->
                 <configuration>
                     <release>20</release>
                 </configuration>
